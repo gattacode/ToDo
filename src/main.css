@@ -20,8 +20,7 @@
 	font-family: 'montserrat', sans-serif;
 }
 
-input:not([type="radio"]):not([type="checkbox"]),
-button {
+input:not([type="radio"]):not([type="checkbox"]), button {
 	appearance: none;
 	border: none;
 	outline: none;
@@ -29,10 +28,15 @@ button {
 	cursor: initial;
 }
 
-body, html {
+body {
 	background: var(--light);
 	color: var(--dark);
-	width: 100%; /* Set width to 100% */
+}
+
+#app {
+	max-width: 100%;
+	margin: 0 auto;
+	padding: 2rem 1.5rem;
 }
 
 section {
@@ -58,13 +62,16 @@ h4 {
 
 .greeting .title {
 	display: flex;
-	align-items: center; /* Center vertically */
 }
 
 .greeting .title input {
 	margin-left: 0.5rem;
-	flex: 1; /* Remove flex-basis and flex-grow */
+	flex: 1 1 0%;
 	min-width: 0;
+}
+
+.greeting .title,
+.greeting .title input {
 	color: var(--dark);
 	font-size: 1.5rem;
 	font-weight: 700;
@@ -170,7 +177,7 @@ input:checked ~ .bubble::after {
 
 .todo-list .list {
 	margin: 1rem 0;
-}
+} 
 
 .todo-list .todo-item {
 	display: flex;
@@ -189,7 +196,7 @@ input:checked ~ .bubble::after {
 }
 
 .todo-item .todo-content {
-	flex: 1; /* Remove flex-basis and flex-grow */
+	flex: 1 1 0%;
 }
 
 .todo-item .todo-content input {
