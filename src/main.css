@@ -20,7 +20,8 @@
 	font-family: 'montserrat', sans-serif;
 }
 
-input:not([type="radio"]):not([type="checkbox"]), button {
+input:not([type="radio"]):not([type="checkbox"]),
+button {
 	appearance: none;
 	border: none;
 	outline: none;
@@ -31,8 +32,7 @@ input:not([type="radio"]):not([type="checkbox"]), button {
 body, html {
 	background: var(--light);
 	color: var(--dark);
-	max-width: 100%;
-    overflow-x: hidden;
+	width: 100%; /* Set width to 100% */
 }
 
 section {
@@ -58,16 +58,13 @@ h4 {
 
 .greeting .title {
 	display: flex;
+	align-items: center; /* Center vertically */
 }
 
 .greeting .title input {
 	margin-left: 0.5rem;
-	flex: 1 1 0%;
+	flex: 1; /* Remove flex-basis and flex-grow */
 	min-width: 0;
-}
-
-.greeting .title,
-.greeting .title input {
 	color: var(--dark);
 	font-size: 1.5rem;
 	font-weight: 700;
@@ -173,7 +170,7 @@ input:checked ~ .bubble::after {
 
 .todo-list .list {
 	margin: 1rem 0;
-} 
+}
 
 .todo-list .todo-item {
 	display: flex;
@@ -192,7 +189,7 @@ input:checked ~ .bubble::after {
 }
 
 .todo-item .todo-content {
-	flex: 1 1 0%;
+	flex: 1; /* Remove flex-basis and flex-grow */
 }
 
 .todo-item .todo-content input {
