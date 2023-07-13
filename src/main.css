@@ -1,5 +1,5 @@
 :root {
-	--primary: #EA40A4;
+	--primary: #a1a1a1;
 	--business: #3A82EE;
 	--personal: var(--primary);
 	--light: #EEE;
@@ -28,9 +28,11 @@ input:not([type="radio"]):not([type="checkbox"]), button {
 	cursor: initial;
 }
 
-body {
+body, html {
 	background: var(--light);
 	color: var(--dark);
+	max-width: 100%;
+    overflow-x: hidden;
 }
 
 section {
