@@ -22,6 +22,8 @@ const addTodo = () => {
     done: false,
     created_at: new Date().getTime()
   })
+
+  input_content.value = ''
 }
 
 const removeTodo = todo => {
@@ -46,54 +48,61 @@ onMounted(() => {
 <template>
   <main class="app">
     <div class="greeting">
+      <h4>
+        {{ new Date().toLocaleDateString() }}
+      </h4>
       <h2 class="title">
         Hello, <input type="text" placeholder="Name here" v-model="name">
       </h2>
+      
     </div>
+    
+    <section class="todo-list">
+      <h3>To Do</h3>
+      <div class="list">
+        <div v-for="todo in todos_asc" :class="`todo-item ${todo.done && 'done'}`">
+          <label>
+            <input type="checkbox" v-model="todo.done">
+            <span :class="`bubble ${todo.category}`"></span>
+          </label>
+          <div class="todo-content">
+            <input type="text" v-model="todo.content">
+          </div>
+
+          <div class="actions">
+            <button class="delete" @click="removeTodo(todo)">
+            <img src="https://icongr.am/feather/trash.svg?size=16&color=ffffff" alt="Delete">
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="create-todo">
       <h3>Add a task</h3>
 
       <form @submit.prevent="addTodo">
-        <h4>What's on your todo list</h4>
+        <h4>What do you have to do</h4>
         <input type="text" placeholder="e.g. read mails" v-model="input_content">
 
         <h4>Category</h4>
         <div class="options">
+          <label>
+            <input type="radio" name="category" value="personal" v-model="input_category" checked>
+            <span class="bubble personal"></span>
+            <div>Personal</div>
+          </label>
+
           <label>
             <input type="radio" name="category" value="business" v-model="input_category">
             <span class="bubble business"></span>
             <div>Business</div>
           </label>
 
-          <label>
-            <input type="radio" name="category" value="personal" v-model="input_category">
-            <span class="bubble personal"></span>
-            <div>Personal</div>
-          </label>
-
         </div>
 
         <input type="submit" value="Add todo">
       </form>
-    </section>
-
-    <section class="todo-list">
-      <h3>TODO LIST</h3>
-      <div class="list">
-        <div v-for="todo in todos_asc" :class="`todo-item ${todo.done && 'done'}`">
-          <label>
-          <input type="checkbox" v-model="todo.done">
-          <span :class="`bubble ${todo.category}`"></span>
-        </label>
-          <div class="todo-content">
-            <input type="text" v-model="todo.content">
-          </div>
-
-          <div class="actions">
-            <button class="delete" @click="removeTodo(todo)">Delete</button>
-          </div>
-        </div>
-      </div>
     </section>
   </main>
 </template>
