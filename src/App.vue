@@ -5,7 +5,7 @@ const todos = ref([])
 const name = ref('')
 
 const input_content = ref('')
-const input_category = ref(null)
+const input_category = ref('personal')
 
 const todos_asc = computed(() => todos.value.sort((a, b) => {
   return a.created_at - b.created_at
@@ -88,7 +88,7 @@ onMounted(() => {
         <h4>Category</h4>
         <div class="options">
           <label>
-            <input type="radio" name="category" value="personal" v-model="input_category" checked>
+            <input type="radio" name="category" value="personal" v-model="input_category">
             <span class="bubble personal"></span>
             <div>Personal</div>
           </label>
